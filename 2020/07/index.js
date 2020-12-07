@@ -21,7 +21,7 @@ const p = list.reduce((acc, [color, containers]) => {
     .map((r) => r.trim());
 
   for (const rule of numberless) {
-    acc[rule] = acc[rule] ? acc[rule].concat(color.trim()) : [color.trim()];
+    acc[rule] = newOrConcat(acc[rule], color.trim());
   }
 
   return acc;
@@ -52,8 +52,10 @@ const p2 = list.reduce((acc, [color_s, containers_str]) => {
     if (!r) {
       acc[color] = null;
     } else {
-      const n = Number(r[0]);
-      acc[color] = newOrConcat(acc[color], { c: c.replace(r[0], ""), n });
+      acc[color] = newOrConcat(acc[color], {
+        c: c.replace(r[0], ""),
+        n: Number(r[0]),
+      });
     }
   }
 
@@ -62,8 +64,8 @@ const p2 = list.reduce((acc, [color_s, containers_str]) => {
 
 function getContained(color, d) {
   const item = p2[color];
+
   if (!item) {
-    console.log(d, color, "contiene", 0);
     return 0;
   }
 
@@ -72,9 +74,9 @@ function getContained(color, d) {
     const { c, n } = rule;
     s += n * (getContained(c, `${d}\t`) + 1);
   }
-  console.log(d, color, "contiene", s);
   return s;
 }
 
 const part2 = getContained(MY_COLOR, "");
+
 console.log("Part 2: ", part2);
