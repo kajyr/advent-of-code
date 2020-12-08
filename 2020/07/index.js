@@ -1,6 +1,6 @@
-const fs = require("fs");
+const { readFile } = require("../utils");
 
-const input = fs.readFileSync("./input.txt", "utf-8").trim();
+const input = readFile(__dirname).trim();
 
 function newOrConcat(list, item) {
   return list ? list.concat(item) : [item];

@@ -1,16 +1,13 @@
-const fs = require("fs");
+const { readFile } = require("../utils");
 
-const input = fs.readFileSync("./input.txt", "utf-8");
+const input = readFile(__dirname);
 
-const list = input
-  .split("\n")
-  .filter((line) => line.trim() !== "")
-  .map((line) => {
-    const [rule, pwd] = line.split(": ");
-    const [min, max] = rule.match(/(\d+)/g);
-    const letter = rule.charAt(rule.length - 1);
-    return [min, max, letter, pwd];
-  });
+const list = input.split("\n").map((line) => {
+  const [rule, pwd] = line.split(": ");
+  const [min, max] = rule.match(/(\d+)/g);
+  const letter = rule.charAt(rule.length - 1);
+  return [min, max, letter, pwd];
+});
 
 function count(str, letter) {
   const m = str.match(new RegExp(letter, "g"));

@@ -1,9 +1,8 @@
-const fs = require("fs");
+const { readFile } = require("../utils");
 
-const input = fs.readFileSync("./input.txt", "utf-8");
+const input = readFile(__dirname);
 
 const list = input.split("\n");
-list.pop();
 
 function countTrees(list, slopeRight, slopeDown = 1) {
   let posX = 0;
