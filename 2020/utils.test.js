@@ -1,4 +1,4 @@
-const { fieldFromStr } = require("./utils");
+const { fieldFromStr, discreteRotate90d } = require("./utils");
 
 describe("fieldFromStr.at", () => {
   const str = "012345678";
