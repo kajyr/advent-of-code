@@ -1,4 +1,4 @@
-const { readFile } = require("../utils");
+const { readFile } = require("../../utils");
 
 const input = readFile(__dirname).trim();
 

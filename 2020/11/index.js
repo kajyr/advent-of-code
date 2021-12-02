@@ -1,4 +1,4 @@
-const { readFile, fieldFromStr } = require("../utils");
+const { readFile, fieldFromStr } = require("../../utils");
 
 const input = readFile(__dirname);
 

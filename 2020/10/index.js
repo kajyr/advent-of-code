@@ -1,4 +1,4 @@
-const { readFile } = require("../utils");
+const { readFile } = require("../../utils");
 
 function listWithout(list, index, count) {
   if (index + count > list.length) {
