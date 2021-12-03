@@ -1,8 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 
-const readFile = (base, file = "input.txt") =>
-  fs.readFileSync(path.join(base, file), "utf-8").trim();
+const readFile = (base, file = "input.txt") => {
+  const fileName = process.argv[2] || file;
+  return fs.readFileSync(path.join(base, fileName), "utf-8").trim();
+};
 
 /**
  * Returns some functions to treat strings as 2d fields
